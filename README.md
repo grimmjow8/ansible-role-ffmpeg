@@ -16,14 +16,17 @@ Role Variables
 Available variables are listed below, along with default values (see `defaults/main.yml`)
 
 ```yml
-# The path where temp installation files will be stored
+# temp working directory
 ffmpeg_temp_path: "/tmp/ffmpeg"
 
-# The final path of ffmpeg executable
-ffmpeg_executable_path: "/usr/bin/ffmpeg"
+# ffmpeg executable path
+ffmpeg_exe_path: "/usr/bin/ffmpeg"
 
-# The final path of ffprobe executable
-ffprobe_executable_path: "/usr/bin/ffprobe"
+# ffprobe executable path
+ffprobe_exe_path: "/usr/bin/ffprobe"
+
+# ffmpeg version
+ffmpeg_version: "3.1.5"
 ```
 
 Dependencies
@@ -36,7 +39,7 @@ Example Playbook
 ```yml
 - hosts: servers
   roles:
-    - grimmjow8.ffmpeg
+    - grimmjow8.ansible-role-ffmpeg
 ```
 
 License
