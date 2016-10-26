@@ -1,2 +1,9 @@
 ---
 # vars file for ansible-role-ffmpeg
+ffmpeg_filename:   "ffmpeg-release-64bit-static.tar.xz"
+ffmpeg_url:        "https://johnvansickle.com/ffmpeg/releases/{{ffmpeg_filename}}"
+ffmpeg_dl_path:    "{{ffmpeg_temp_path}}/{{ffmpeg_filename}}"
+ffmpeg_dir_suffix: "ffmpeg-3.1.5-64bit-static"
+ffmpeg_untar_dir:  "{{ffmpeg_temp_path}}/{{ffmpeg_dir_suffix}}"
+ffmpeg_tmp_ffprobe_exe: "/tmp/ffmpeg/ffmpeg-3.1.5-64bit-static/ffprobe"
+ffmpeg_tmp_ffmpeg_exe:  "/tmp/ffmpeg/ffmpeg-3.1.5-64bit-static/ffmpeg"

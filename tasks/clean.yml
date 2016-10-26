@@ -1,0 +1,5 @@
+---
+- name: delete temp directory
+  file:
+    path: "{{ ffmpeg_temp_path }}"
+    state: absent

@@ -1,0 +1,13 @@
+---
+# install tool
+- name: check if {{item}} is already installed
+  stat:
+    path: "{{vars[item + '_exe_path']}}"
+  register: bin
+
+- set_fact:
+    tool_name: "{{item}}"
+  when: not bin.stat.exists
+
+- include: setup.yml
+  when: not bin.stat.exists

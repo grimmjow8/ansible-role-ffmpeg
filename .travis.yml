@@ -3,7 +3,7 @@ language: python
 python: "2.7"
 
 # Use the new container infrastructure
-sudo: true
+sudo: required
 
 # Install ansible
 addons:
@@ -19,21 +19,19 @@ install:
   - ansible --version
 
   # Create ansible.cfg with correct roles_path
-  - printf '[defaults]\nroles_path=../' >ansible.cfg
+  - printf '[defaults]\nroles_path=../\nnocows = 1' >ansible.cfg
 
 script:
   # Basic role syntax check
-  - ansible-playbook tests/test.yml -i tests/inventory --syntax-check
-
-  # Run the role/playbook with ansible-playbook
-  - ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
-
-  # Run the role/playbook again, checking to make sure it's idempotent
+  - echo whoami ; whoami
+  - echo pwd ; pwd
+  - ansible-playbook -i tests/inventory --syntax-check test.yml
+  - ansible-playbook -i tests/inventory --connection=local --become -vvvv test.yml
   - >
-    ansible-playbook -i tests/inventory tests/test.yml --connection=local --sudo
+    ansible-playbook -i tests/inventory --connection=local --become -vvvv test.yml
     | grep -q 'changed=0.*failed=0'
-    && (echo 'Idempotence test: pass' && exit 0)
-    || (echo 'Idempotence test: fail' && exit 1)
+    && (echo 'playbook test: pass' && exit 0)
+    || (echo 'playbook test: fail' && exit 1)
 
   # Check if ffmpeg is installed and working.
   - ffmpeg -version

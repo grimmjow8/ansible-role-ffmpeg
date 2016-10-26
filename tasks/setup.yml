@@ -1,0 +1,20 @@
+---
+- name: check tar already downloaded
+  stat:
+    path: "{{ffmpeg_untar_dir}}"
+  register: dl
+
+- include: dl.yml
+  when: not dl.stat.exists
+
+- name: copy {{tool_name}} to executables directory
+  command: cp -p {{vars['ffmpeg_tmp_' + tool_name + '_exe']}} {{vars[tool_name + '_exe_path']}}
+  args:
+    creates: "{{vars[tool_name + '_exe_path']}}"
+  become: yes
+
+- name: make {{tool_name}} executable by all users
+  file:
+    path: "{{vars[tool_name + '_exe_path']}}"
+    mode: 0755
+  become: yes

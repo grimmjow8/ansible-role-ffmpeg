@@ -1,7 +1,7 @@
+## ansible-perl - [![Build Status](https://travis-ci.org/grimmjow8/ansible-role-ffmpeg.png?branch=master)](https://travis-ci.org/grimmjow8/ansible-role-ffmpeg)
+
 Ansible role: ffmpeg
 ====================
-
-[![Build Status](https://travis-ci.org/hedii/ansible-role-ffmpeg.svg?branch=master)](https://travis-ci.org/hedii/ansible-role-ffmpeg)
 
 Installs ffmpeg build by [John Van Sickle](http://johnvansickle.com/) on any Linux or UNIX system.
 
@@ -36,7 +36,7 @@ Example Playbook
 ```yml
 - hosts: servers
   roles:
-    - hedii.ffmpeg
+    - grimmjow8.ffmpeg
 ```
 
 License
