@@ -49,8 +49,8 @@ Vagrant.configure(2) do |config|
 
       # provision ansible
       c.vm.provision 'ansible' do |ansible|
-        ansible.playbook = 'test.yml'
-        ansible.sudo = false
+        ansible.playbook  = 'test.yml'
+        ansible.sudo      = false
 ##        ansible.verbose = 'vvvvvv'
         ansible.host_key_checking = false
       end
